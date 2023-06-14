@@ -1,0 +1,1 @@
+const String quizCoverImg = "https://firebasestorage.googleapis.com/v0/b/quizi-59ade.appspot.com/o/quiz_cover%2FAsset%201.png?alt=media&token=4180cd05-7c16-46dd-94e6-3306615902db";

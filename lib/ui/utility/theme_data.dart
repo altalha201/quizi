@@ -17,5 +17,8 @@ ThemeData quizITheme() {
       ),
       backgroundColor: Colors.white
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: colorPrimary,
+    ),
   );
 }
