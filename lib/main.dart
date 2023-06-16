@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'store_binding.dart';
 import 'ui/screens/splash_screen.dart';
 import 'ui/utility/theme_data.dart';
 
@@ -20,6 +21,7 @@ class QuizI extends StatelessWidget {
       title: "QuizI",
       debugShowCheckedModeBanner: false,
       theme: quizITheme(),
+      initialBinding: StoreBinding(),
       home: const SplashScreen(),
     );
   }

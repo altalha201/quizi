@@ -9,6 +9,11 @@ ThemeData quizITheme() {
       primary: colorPrimary,
     ),
     appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(
+        color: colorPrimary,
+        fontSize: 18,
+        fontWeight: FontWeight.w600
+      ),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(25),
@@ -50,6 +55,9 @@ ThemeData quizITheme() {
           borderRadius: BorderRadius.all(Radius.circular(10))
         ),
       )
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: MaterialStateColor.resolveWith((states) => colorPrimary)
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: colorPrimary,

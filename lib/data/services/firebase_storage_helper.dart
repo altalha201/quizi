@@ -6,7 +6,7 @@ class FirebaseStorageHelper {
 
   final storage = FirebaseStorage.instance.ref();
 
-  Future<void> getDataFromStorage() async {
+  Future<List> getDataFromStorage() async {
     List items = [];
     await storage.child('avaters').listAll().then((value) {
       items = value.items;
@@ -16,5 +16,6 @@ class FirebaseStorageHelper {
       imageRef.add(await element.getDownloadURL());
     }
     log(imageRef.toString());
+    return imageRef;
   }
 }
