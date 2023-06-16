@@ -14,13 +14,18 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   loading_animation_widget: ^1.2.0+4
+  carousel_slider: ^4.2.1
   get: ^4.6.5
+  firebase_core: ^2.14.0
+  firebase_storage: ^11.2.3
+  cloud_firestore: ^4.8.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: any
 
 flutter:
 
@@ -28,6 +33,12 @@ flutter:
 
   assets:
     - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/banner-logo.png"
+  resize_behavior: shrink_only
 
   # fonts:
   #   - family: Schyler

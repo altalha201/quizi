@@ -20,61 +20,65 @@ class QuizCard extends StatelessWidget {
         shape: const RoundedRectangleBorder(
           borderRadius:
           BorderRadius.all(Radius.circular(10),),),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                ),
-                image: DecorationImage(
-                  image: NetworkImage(
-                    quizCoverImg,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                  ),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      quizCoverImg,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 8.0,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    "Quiz Title",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: colorPrimaryBackground,
+              const SizedBox(width: 8.0,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Quiz Title",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: colorPrimaryBackground,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Text(
-                    "Author: Mr. Aziz Alam",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.grey
+                    SizedBox(
+                      height: 4.0,
                     ),
-                  ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  Text("No. of Questions: 10")
-                ],
+                    Text(
+                      "Author: Mr. Aziz Alam",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    Text("No. of Questions: 10")
+                  ],
+                ),
               ),
-            ),
-            const Spacer(),
-            const Icon(Icons.arrow_forward_ios_sharp, color: colorPrimary,),
-            const SizedBox(width: 16.0,),
-          ],
+              const Spacer(),
+              const Icon(Icons.arrow_forward_ios_sharp, color: colorPrimary,),
+              const SizedBox(width: 16.0,),
+            ],
+          ),
         ),
       ),
     );

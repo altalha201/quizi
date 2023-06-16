@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utility/colors.dart';
 import '../../widgets/dual_text.dart';
-import 'create_account_screen.dart';
+import '../../utility/colors.dart';
+import 'create_profile_screen.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class CreateAccountScreen extends StatelessWidget {
+  const CreateAccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +23,15 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Center(
                       child: Image.asset(
-                    "assets/images/logo.png",
-                    height: 80,
-                    fit: BoxFit.scaleDown,
-                  )),
+                        "assets/images/logo.png",
+                        height: 80,
+                        fit: BoxFit.scaleDown,
+                      )),
                   const SizedBox(
                     height: 48.0,
                   ),
                   const Text(
-                    "Get Start With",
+                    "Join With Us",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         fontSize: 36,
@@ -61,21 +62,34 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16.0,
                   ),
+                  TextFormField(
+                    obscureText: true,
+                    cursorColor: Colors.black,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      hintText: "Re Enter Password",
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("Sign In"),
+                      onPressed: () {
+                        Get.off(const CreateProfileScreen());
+                      },
+                      child: const Text("Create Account"),
                     ),
                   ),
                   const SizedBox(
                     height: 52.0,
                   ),
                   DualText(
-                    question: "Have no account? ",
-                    todo: "Create One",
+                    question: "Have an account? ",
+                    todo: "Sign In",
                     onTap: () {
-                      Get.off(const CreateAccountScreen());
+                      Get.off(const LoginScreen());
                     },
                   ),
                 ],
