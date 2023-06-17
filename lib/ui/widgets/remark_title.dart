@@ -15,25 +15,28 @@ class RemarkTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 0.5,
-            color: colorPrimaryBackground,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5,
+              color: colorPrimaryBackground,
+            ),
           ),
-        ),
-        TextButton(
-          onPressed: onSeeAllTap,
-          child: const Text(
-            "See All",
+          TextButton(
+            onPressed: onSeeAllTap,
+            child: const Text(
+              "See All",
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

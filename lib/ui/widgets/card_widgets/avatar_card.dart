@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:quizi/ui/utility/colors.dart';
 
 class AvatarCard extends StatelessWidget {
   const AvatarCard(
-      {Key? key, required this.onTap, required this.imageURL, this.selected})
+      {Key? key,
+      this.onTap,
+      required this.imageURL,
+      this.selected,
+      this.radius})
       : super(key: key);
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final double? radius;
   final String imageURL;
   final bool? selected;
 
@@ -16,8 +22,9 @@ class AvatarCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: CircleAvatar(
-          radius: 25,
+          radius: radius ?? 25,
           backgroundImage: NetworkImage(imageURL),
+          backgroundColor: colorPrimary,
           child: Visibility(
             visible: selected ?? false,
             child: const Icon(

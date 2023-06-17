@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utility/colors.dart';
+import '../widgets/appbars/logo_appbar.dart';
 import 'auth_module/create_account_screen.dart';
 import 'auth_module/login_screen.dart';
 import '../widgets/remark_title.dart';
@@ -13,16 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset("assets/images/banner-logo.png"),
-            ),
-          ),
-        ),
-      ),
+      appBar: logoAppbar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

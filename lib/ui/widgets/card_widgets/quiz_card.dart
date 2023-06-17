@@ -21,7 +21,7 @@ class QuizCard extends StatelessWidget {
           borderRadius:
           BorderRadius.all(Radius.circular(10),),),
         child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
+          width: MediaQuery.of(context).size.width * 0.9,
           height: 100,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
