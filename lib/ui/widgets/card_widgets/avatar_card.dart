@@ -22,7 +22,7 @@ class AvatarCard extends StatelessWidget {
             visible: selected ?? false,
             child: const Icon(
               IconData(0xe156, fontFamily: 'MaterialIcons'),
-              size: 72,
+              size: 48,
             ),
           ),
         ),

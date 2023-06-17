@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                     question: "Have no account? ",
                     todo: "Create One",
                     onTap: () {
-                      Get.off(const CreateAccountScreen());
+                      Get.off(CreateAccountScreen());
                     },
                   ),
                 ],

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/avater_controller.dart';
+import '../../controllers/avatar_controller.dart';
+import '../../controllers/profile_create_controller.dart';
 import '../../utility/colors.dart';
 import '../../widgets/card_widgets/avatar_card.dart';
+import '../../widgets/loading_widget.dart';
+import '../student_module/student_dashboard_screen.dart';
+import '../teacher_module/teacher_dashboard_screen.dart';
 
 class CreateProfileScreen extends StatefulWidget {
-  const CreateProfileScreen({Key? key}) : super(key: key);
+  const CreateProfileScreen({Key? key, required this.email}) : super(key: key);
+
+  final String email;
 
   @override
   State<CreateProfileScreen> createState() => _CreateProfileScreenState();
@@ -16,9 +22,16 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
   int? role = 0;
   int? selectedAvatar = 0;
 
+  final TextEditingController nameET = TextEditingController();
+
   @override
   void initState() {
-    Get.find<AvaterController>().getAvaters();
+    // if (Get.find<AvatarController>().avatars.isEmpty) {
+    //   Get.find<AvatarController>().getAvatars();
+    // }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<AvatarController>().getAvatars();
+    });
     super.initState();
   }
 
@@ -29,12 +42,10 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
         title: const Text("Create Your Profile"),
         centerTitle: true,
       ),
-      body: GetBuilder<AvaterController>(
+      body: GetBuilder<AvatarController>(
         builder: (controller) {
-          if (controller.gettingAvaters) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+          if (controller.gettingAvatars) {
+            return const LoadingWidget();
           }
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -98,7 +109,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                 const Padding(
                   padding: EdgeInsets.only(left: 16.0),
                   child: Text(
-                    "Select an Avater",
+                    "Select an Avatar",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 18,
@@ -112,10 +123,10 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                 ),
                 Expanded(
                   child: GridView.builder(
-                    itemCount: controller.avaters.length,
+                    itemCount: controller.avatars.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
+                            crossAxisCount: 6,
                             crossAxisSpacing: 8.0,
                             mainAxisSpacing: 8.0),
                     itemBuilder: (context, index) {
@@ -125,19 +136,44 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                             selectedAvatar = index;
                           });
                         },
-                        imageURL: controller.avaters.elementAt(index),
+                        imageURL: controller.avatars.elementAt(index),
                         selected: index == selectedAvatar,
                       );
                     },
                   ),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Create Profile"),
-                  ),
-                )
+                GetBuilder<ProfileCreateController>(
+                    builder: (createController) {
+                  return SizedBox(
+                    width: double.infinity,
+                    child: Visibility(
+                      visible: !createController.creatingProfile,
+                      replacement: const LoadingWidget(),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (role == 0) {
+                            final response = await createController.createStudent(
+                                nameET.text,
+                                widget.email,
+                                controller.avatars[selectedAvatar!]);
+                            if (response) {
+                              Get.offAll(const StudentDashboardScreen());
+                            }
+                          } else {
+                            final response = await createController.createTeacher(
+                                nameET.text,
+                                widget.email,
+                                controller.avatars[selectedAvatar!]);
+                            if (response) {
+                              Get.offAll(const TeacherDashboardScreen());
+                            }
+                          }
+                        },
+                        child: const Text("Create Profile"),
+                      ),
+                    ),
+                  );
+                })
               ],
             ),
           );

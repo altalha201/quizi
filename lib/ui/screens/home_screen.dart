@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/ui/screens/auth_module/create_account_screen.dart';
-import 'package:quizi/ui/utility/colors.dart';
 
+import '../utility/colors.dart';
+import 'auth_module/create_account_screen.dart';
 import 'auth_module/login_screen.dart';
 import '../widgets/remark_title.dart';
 import '../widgets/card_widgets/quiz_card.dart';
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.to(const CreateAccountScreen());
+                      Get.to(CreateAccountScreen());
                     },
                     child: const Text("Create Account"),
                   ),
