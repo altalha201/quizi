@@ -132,7 +132,7 @@ class CreateAccountScreen extends StatelessWidget {
                       question: "Have an account? ",
                       todo: "Sign In",
                       onTap: () {
-                        Get.off(const LoginScreen());
+                        Get.off(LoginScreen());
                       },
                     ),
                   ],

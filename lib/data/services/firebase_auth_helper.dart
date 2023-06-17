@@ -2,21 +2,33 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../models/user_create_response_model.dart';
+import '../models/request_model.dart';
 
 class FirebaseAuthHelper {
   final authRef = FirebaseAuth.instance;
 
-  Future<UserCreateResponseModel> createUser(String email, String pass) async {
+  Future<RequestModel> createUser(String email, String pass) async {
     try {
       final credential = await authRef.createUserWithEmailAndPassword(
           email: email, password: pass);
-      return UserCreateResponseModel(isSuccess: true, returnData: credential.user!.uid);
+      return RequestModel(isSuccess: true, returnData: credential.user!.uid);
     } on FirebaseAuthException catch(e) {
-      return UserCreateResponseModel(isSuccess: false, returnData: e.code);
+      return RequestModel(isSuccess: false, returnData: e.code);
     } catch (e) {
       log(e.toString());
-      return UserCreateResponseModel(isSuccess: false, returnData: "");
+      return RequestModel(isSuccess: false);
+    }
+  }
+
+  Future<RequestModel> loginUser(String email, String pass) async {
+    try {
+      final credential = await authRef.signInWithEmailAndPassword(email: email, password: pass);
+      return RequestModel(isSuccess: true, returnData: credential.user!.uid);
+    } on FirebaseAuthException catch(e) {
+      return RequestModel(isSuccess: false, returnData: e.code);
+    } catch (e) {
+      log(e.toString());
+      return RequestModel(isSuccess: false);
     }
   }
 }

@@ -19,16 +19,13 @@ class CreateProfileScreen extends StatefulWidget {
 }
 
 class _CreateProfileScreenState extends State<CreateProfileScreen> {
-  int? role = 0;
-  int? selectedAvatar = 0;
+  int? _role = 0;
+  int? _selectedAvatar = 0;
 
-  final TextEditingController nameET = TextEditingController();
+  final TextEditingController _nameET = TextEditingController();
 
   @override
   void initState() {
-    // if (Get.find<AvatarController>().avatars.isEmpty) {
-    //   Get.find<AvatarController>().getAvatars();
-    // }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Get.find<AvatarController>().getAvatars();
     });
@@ -54,6 +51,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(hintText: "Full name"),
+                  controller: _nameET,
                 ),
                 const SizedBox(
                   height: 32.0,
@@ -80,10 +78,10 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                         title: const Text("Student"),
                         subtitle: const Text("Can attend Quizzes"),
                         value: 0,
-                        groupValue: role,
+                        groupValue: _role,
                         onChanged: (value) {
                           setState(() {
-                            role = value;
+                            _role = value;
                           });
                         },
                       ),
@@ -93,10 +91,10 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                         title: const Text("Teacher"),
                         subtitle: const Text("Can create Quizzes"),
                         value: 1,
-                        groupValue: role,
+                        groupValue: _role,
                         onChanged: (value) {
                           setState(() {
-                            role = value;
+                            _role = value;
                           });
                         },
                       ),
@@ -133,11 +131,11 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       return AvatarCard(
                         onTap: () {
                           setState(() {
-                            selectedAvatar = index;
+                            _selectedAvatar = index;
                           });
                         },
                         imageURL: controller.avatars.elementAt(index),
-                        selected: index == selectedAvatar,
+                        selected: index == _selectedAvatar,
                       );
                     },
                   ),
@@ -151,19 +149,19 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       replacement: const LoadingWidget(),
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (role == 0) {
+                          if (_role == 0) {
                             final response = await createController.createStudent(
-                                nameET.text,
+                                _nameET.text,
                                 widget.email,
-                                controller.avatars[selectedAvatar!]);
+                                controller.avatars[_selectedAvatar!]);
                             if (response) {
                               Get.offAll(const StudentDashboardScreen());
                             }
                           } else {
                             final response = await createController.createTeacher(
-                                nameET.text,
+                                _nameET.text,
                                 widget.email,
-                                controller.avatars[selectedAvatar!]);
+                                controller.avatars[_selectedAvatar!]);
                             if (response) {
                               Get.offAll(const TeacherDashboardScreen());
                             }

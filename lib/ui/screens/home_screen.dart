@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.to(const LoginScreen());
+                      Get.to(LoginScreen());
                     },
                     child: const Text("Sign In"),
                   ),

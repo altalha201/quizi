@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 
 import '../../data/models/student_profile_model.dart';
@@ -27,7 +29,7 @@ class GetUserController extends GetxController {
     final response = await FirebaseDatabaseHelper().getStudentProfile(Get.find<CacheController>().userId!);
     _gettingProfile = false;
     if (response.isSuccess) {
-      _studentProfile = StudentProfileModel.fromJson(response.returnData);
+      _studentProfile = StudentProfileModel.fromJson(jsonDecode(response.returnData));
       update();
       return true;
     } else {

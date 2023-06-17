@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:firebase_database/firebase_database.dart';
 
@@ -30,24 +31,28 @@ class FirebaseDatabaseHelper {
   Future<String> getUserRole(String uid) async {
     final role = await database.ref("user/$uid/role").get();
     if (role.exists) {
-      return role.toString();
+      log(role.value.toString());
+      return role.value.toString();
     } else {
       return "";
     }
   }
 
   Future<RequestModel> getStudentProfile(String uid) async {
-    final student = await database.ref("student/$uid").get();
+    final student = await database.ref("users/students/$uid").get();
     if (student.exists) {
-      return RequestModel(isSuccess: true, returnData: jsonEncode(student));
+
+      log(student.value.toString());
+      return RequestModel(isSuccess: true, returnData: jsonEncode(student.value));
     } else {
       return RequestModel(isSuccess: false);
     }
   }
 
   Future<RequestModel> getTeacherProfile(String uid) async {
-    final teacher = await database.ref("student/$uid").get();
+    final teacher = await database.ref("users/teachers/$uid").get();
     if (teacher.exists) {
+      log(teacher.toString());
       return RequestModel(isSuccess: true, returnData: jsonEncode(teacher));
     } else {
       return RequestModel(isSuccess: false);

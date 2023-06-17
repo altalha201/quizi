@@ -24,6 +24,18 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
         title: const Text("Student"),
         centerTitle: true,
       ),
+      body: Center(
+        child: GetBuilder<GetUserController>(
+          builder: (controller) {
+            return Text(controller.studentProfile.userName ?? "No Name");
+          }
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Get.find<GetUserController>().getStudent();
+        },
+      ),
     );
   }
 }
