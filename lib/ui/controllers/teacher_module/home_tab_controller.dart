@@ -9,4 +9,9 @@ class HomeTabController extends GetxController {
     _selectedTab = newTabIndex;
     update();
   }
+
+  void setToHome() {
+    _selectedTab = 1;
+    update();
+  }
 }

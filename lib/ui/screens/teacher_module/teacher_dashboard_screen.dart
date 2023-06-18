@@ -22,9 +22,9 @@ class TeacherDashboardScreen extends StatefulWidget {
 class _TeacherDashboardScreenState extends State<TeacherDashboardScreen> {
   @override
   void initState() {
-    if (Get.find<GetUserController>().teacherProfile.uid == null) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Get.find<GetUserController>().getTeacher();
-    }
+    });
     super.initState();
   }
 

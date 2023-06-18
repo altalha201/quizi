@@ -33,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
           await Get.find<GetUserController>().getStudent();
           Get.offAll(const StudentDashboardScreen());
         } else if (getRole == 'teacher') {
-          await Get.find<GetUserController>().getTeacher();
           Get.offAll(const TeacherDashboardScreen());
         } else {
           Get.find<CacheController>().logout();
