@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'colors.dart';
 
@@ -20,7 +21,10 @@ ThemeData quizITheme() {
             bottomRight: Radius.circular(25),
           ),
       ),
-      backgroundColor: Colors.white
+      backgroundColor: Colors.white,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: colorPrimary
+      )
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(

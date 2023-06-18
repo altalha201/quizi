@@ -25,6 +25,7 @@ dependencies:
   email_validator: ^2.1.17
   molten_navigationbar_flutter: ^1.0.1
   uuid: ^3.0.7
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
