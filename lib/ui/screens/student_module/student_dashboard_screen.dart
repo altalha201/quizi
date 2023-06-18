@@ -34,15 +34,16 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
           children: [
             SizedBox(
               height: 200,
-              child:
-                  GetBuilder<GetUserController>(builder: (profileController) {
-                if (profileController.gettingProfile) {
-                  return const LoadingWidget();
-                }
-                return StudentProfileCard(
-                  student: profileController.studentProfile,
-                );
-              }),
+              child: GetBuilder<GetUserController>(
+                builder: (profileController) {
+                  if (profileController.gettingProfile) {
+                    return const LoadingWidget();
+                  }
+                  return StudentProfileCard(
+                    student: profileController.studentProfile,
+                  );
+                },
+              ),
             ),
             const SizedBox(
               height: 32.0,
@@ -51,9 +52,7 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  children: [
-                    for (var i = 0; i <= 8; i++) const QuizCard()
-                  ],
+                  children: [for (var i = 0; i <= 8; i++) const QuizCard()],
                 ),
               ),
             ),

@@ -52,8 +52,8 @@ class FirebaseDatabaseHelper {
   Future<RequestModel> getTeacherProfile(String uid) async {
     final teacher = await database.ref("users/teachers/$uid").get();
     if (teacher.exists) {
-      log(teacher.toString());
-      return RequestModel(isSuccess: true, returnData: jsonEncode(teacher));
+      log(teacher.value.toString());
+      return RequestModel(isSuccess: true, returnData: jsonEncode(teacher.value));
     } else {
       return RequestModel(isSuccess: false);
     }

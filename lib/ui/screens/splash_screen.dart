@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:quizi/ui/controllers/quiz_theme_controller.dart';
 
+import '../controllers/avatar_controller.dart';
 import '../controllers/cache_controller.dart';
 import '../controllers/get_user_controller.dart';
 import '../utility/colors.dart';
@@ -19,7 +21,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // Get.find<AvatarController>().getAvatars();
+    Get.find<AvatarController>().getAvatars();
+    Get.find<QuizThemeController>().getThemes();
     Future.delayed(const Duration(seconds: 3)).then((value) async {
       if (!Get.find<CacheController>().isLogin()) {
         Get.offAll(

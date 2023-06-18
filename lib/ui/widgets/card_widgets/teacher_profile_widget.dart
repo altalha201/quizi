@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../data/models/student_profile_model.dart';
+import '../../../data/models/teacher_profile_model.dart';
 import '../../controllers/cache_controller.dart';
 import '../../utility/colors.dart';
 import '../../utility/other_utils.dart';
 import 'avatar_card.dart';
 
-class StudentProfileCard extends StatelessWidget {
-  const StudentProfileCard({
+class TeacherProfileCard extends StatelessWidget {
+  const TeacherProfileCard({
     Key? key,
-    this.student,
+    this.teacher,
   }) : super(key: key);
 
-  final StudentProfileModel? student;
+  final TeacherProfileModel? teacher;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class StudentProfileCard extends StatelessWidget {
               radius: 60,
               backgroundColor: colorPrimary,
               child: AvatarCard(
-                imageURL: student?.imgUrl ?? defaultProfileImg,
+                imageURL: teacher?.imgUrl ?? defaultProfileImg,
                 radius: 59,
               ),
             ),
@@ -53,7 +53,7 @@ class StudentProfileCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            student?.userName ?? "User Name",
+                            teacher?.userName ?? "User Name",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: const TextStyle(
@@ -65,7 +65,7 @@ class StudentProfileCard extends StatelessWidget {
                             height: 4.0,
                           ),
                           Text(
-                            student?.email ?? "Email",
+                            teacher?.email ?? "Email",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: const TextStyle(
@@ -92,22 +92,57 @@ class StudentProfileCard extends StatelessWidget {
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Text(
-                    "${student?.points ?? 0} / ${student?.totalPoints ?? 0}",
-                    style: const TextStyle(
-                      color: colorPrimary
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  LinearProgressIndicator(
-                    backgroundColor: colorPrimary.withOpacity(0.3),
-                    value: (student?.points ?? 0) /
-                        ((student?.totalPoints == 0
-                                ? 1
-                                : student!.totalPoints) ??
-                            1),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          const Text(
+                            "Quiz Created",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 4.0,
+                          ),
+                          Text(
+                            (teacher?.noOfQuizzes ?? 0).toString(),
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w400,
+                              color: colorPrimary,
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        height: 70,
+                        width: 1,
+                        color: colorPrimary.withOpacity(0.3),
+                      ),
+                      Column(
+                        children: [
+                          const Text(
+                            "Participants",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 4.0,
+                          ),
+                          Text(
+                            (teacher?.participants ?? 0).toString(),
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w400,
+                              color: colorPrimary,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ],
               ),

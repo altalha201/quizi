@@ -12,7 +12,7 @@ class AvatarController extends GetxController {
   Future<void> getAvatars() async {
     _gettingAvatar = true;
     update();
-    _avatars = await FirebaseStorageHelper().getDataFromStorage();
+    _avatars = await FirebaseStorageHelper().getDataFromStorage('avaters');
 
     _gettingAvatar = false;
     update();

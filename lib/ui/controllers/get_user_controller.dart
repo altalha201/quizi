@@ -44,7 +44,7 @@ class GetUserController extends GetxController {
     final response = await FirebaseDatabaseHelper().getTeacherProfile(Get.find<CacheController>().userId!);
     _gettingProfile = false;
     if (response.isSuccess) {
-      _teacherProfile = TeacherProfileModel.fromJson(response.returnData);
+      _teacherProfile = TeacherProfileModel.fromJson(jsonDecode(response.returnData));
       update();
       return true;
     } else {

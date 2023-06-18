@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -133,6 +135,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           setState(() {
                             _selectedAvatar = index;
                           });
+                          log(_selectedAvatar.toString());
                         },
                         imageURL: controller.avatars.elementAt(index),
                         selected: index == _selectedAvatar,

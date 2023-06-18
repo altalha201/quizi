@@ -59,6 +59,9 @@ ThemeData quizITheme() {
     radioTheme: RadioThemeData(
       fillColor: MaterialStateColor.resolveWith((states) => colorPrimary)
     ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateColor.resolveWith((states) => colorPrimary)
+    ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: colorPrimary,
     ),

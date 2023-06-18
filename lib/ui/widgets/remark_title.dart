@@ -7,11 +7,11 @@ class RemarkTitle extends StatelessWidget {
   const RemarkTitle({
     Key? key,
     required this.label,
-    required this.onSeeAllTap,
+    this.onSeeAllTap,
   }) : super(key: key);
 
   final String label;
-  final VoidCallback onSeeAllTap;
+  final VoidCallback? onSeeAllTap;
 
   @override
   Widget build(BuildContext context) {
