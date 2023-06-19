@@ -7,6 +7,7 @@ import 'ui/controllers/get_user_controller.dart';
 import 'ui/controllers/profile_create_controller.dart';
 import 'ui/controllers/quiz_module/create_quiz_controller.dart';
 import 'ui/controllers/quiz_module/get_quizzes_controller.dart';
+import 'ui/controllers/quiz_module/play_controller.dart';
 import 'ui/controllers/quiz_theme_controller.dart';
 import 'ui/controllers/teacher_module/get_teachers_quiz_list_controller.dart';
 import 'ui/controllers/teacher_module/home_tab_controller.dart';
@@ -22,6 +23,7 @@ class StoreBinding extends Bindings {
     Get.put(GetTeachersQuizListController());
     Get.put(GetUserController());
     Get.put(HomeTabController());
+    Get.put(PlayController());
     Get.put(ProfileCreateController());
     Get.put(QuizThemeController());
     Get.put(UserAuthController());

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/quiz_model/live_quiz_model.dart';
 import '../models/quiz_model/normal_quiz_model.dart';
+import '../models/quiz_model/question.dart';
 import '../models/quiz_model/quiz_question_model.dart';
 import '../models/request_model.dart';
 
@@ -99,6 +100,17 @@ class CloudStoreHelper {
         returnList.add(LiveQuizModel.fromJson(doc.data()));
         log(doc.data().toString());
       }
+    });
+    log(returnList.toString());
+    return RequestModel(isSuccess: true, returnData: returnList);
+  }
+
+  Future<RequestModel> getQuestions(String quizID) async {
+    final ref = cloud.collection("questions").doc(quizID);
+    List<Question> returnList = [];
+    await ref.get().then((documents) {
+      QuizQuestionsModel model = QuizQuestionsModel.fromJson(documents.data()!);
+      returnList = model.questions!;
     });
     log(returnList.toString());
     return RequestModel(isSuccess: true, returnData: returnList);

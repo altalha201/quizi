@@ -54,9 +54,16 @@ class StartQuizScreen extends StatelessWidget {
               visible: fromStudent ?? false,
               child: InkWell(
                 onTap: () {
-                  Get.to(PlayQuizScreen(quizID: isLive
-                      ? (liveQuizModel?.quizId ?? "")
-                      : (normalQuizModel?.quizId ?? "")));
+                  Get.to(
+                    PlayQuizScreen(
+                      quizID: isLive
+                          ? (liveQuizModel?.quizId ?? "")
+                          : (normalQuizModel?.quizId ?? ""),
+                      creatorID: isLive
+                          ? (liveQuizModel?.quizId ?? "")
+                          : (normalQuizModel?.quizId ?? ""),
+                    ),
+                  );
                 },
                 borderRadius: const BorderRadius.all(Radius.circular(100)),
                 child: Padding(
@@ -74,7 +81,10 @@ class StartQuizScreen extends StatelessWidget {
                           child: Text(
                         "Start Quiz",
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500),
                       )),
                     ),
                   ),
