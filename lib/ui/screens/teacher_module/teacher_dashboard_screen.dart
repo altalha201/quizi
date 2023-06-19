@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
+import 'package:quizi/ui/controllers/teacher_module/get_teachers_quiz_list_controller.dart';
 import 'package:quizi/ui/screens/teacher_module/tabs/create_quiz_tab.dart';
 import 'package:quizi/ui/screens/teacher_module/tabs/home_tab.dart';
 import 'package:quizi/ui/screens/teacher_module/tabs/participents_list_tab.dart';
@@ -22,8 +23,9 @@ class TeacherDashboardScreen extends StatefulWidget {
 class _TeacherDashboardScreenState extends State<TeacherDashboardScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Get.find<GetUserController>().getTeacher();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Get.find<GetUserController>().getTeacher();
+      await Get.find<GetTeachersQuizListController>().getNormalList();
     });
     super.initState();
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/get_user_controller.dart';
+import '../../controllers/quiz_module/get_quizzes_controller.dart';
 import '../../widgets/appbars/logo_appbar.dart';
 import '../../widgets/card_widgets/quiz_card.dart';
 import '../../widgets/card_widgets/student_profile_card.dart';
@@ -19,9 +20,11 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
   @override
   void initState() {
     super.initState();
-    if (Get.find<GetUserController>().studentProfile.uid == null) {
-      Get.find<GetUserController>().getStudent();
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Get.find<GetUserController>().getStudent();
+      await Get.find<GetQuizzesController>().getQuizzes();
+      await Get.find<GetQuizzesController>().getLiveQuizzes();
+    });
   }
 
   @override
@@ -50,10 +53,35 @@ class _StudentDashboardScreenState extends State<StudentDashboardScreen> {
             ),
             RemarkTitle(label: "Available Quizzes", onSeeAllTap: () {}),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [for (var i = 0; i <= 8; i++) const QuizCard()],
-                ),
+              child: GetBuilder<GetQuizzesController>(
+                builder: (listController) {
+                  if (listController.gettingNormalQuizzes) {
+                    return const LoadingWidget();
+                  }
+                  return ListView.builder(
+                    itemCount: listController.quizzes.length > 5 ? 5 : listController.quizzes.length,
+                      itemBuilder: (context, index) {
+                        return QuizCard(isLive: false, nQuiz: listController.quizzes.elementAt(index), isStudent: true,);
+                      }
+                  );
+                }
+              ),
+            ),
+            const SizedBox(height: 16.0,),
+            RemarkTitle(label: "Available Live Quizzes", onSeeAllTap: () {}),
+            Expanded(
+              child: GetBuilder<GetQuizzesController>(
+                  builder: (listController) {
+                    if (listController.gettingLiveQuizzes) {
+                      return const LoadingWidget();
+                    }
+                    return ListView.builder(
+                        itemCount: listController.liveQuizzes.length > 5 ? 5 : listController.liveQuizzes.length,
+                        itemBuilder: (context, index) {
+                          return QuizCard(isLive: true, lQuiz: listController.liveQuizzes.elementAt(index), isStudent: true,);
+                        }
+                    );
+                  }
               ),
             ),
           ],

@@ -9,7 +9,7 @@ import '../../../data/models/quiz_model/question.dart';
 import '../../controllers/quiz_module/create_quiz_controller.dart';
 import '../../controllers/teacher_module/home_tab_controller.dart';
 import '../../utility/colors.dart';
-import '../../widgets/card_widgets/theme_card.dart';
+import '../../widgets/card_widgets/quiz_view_card.dart';
 import '../../widgets/loading_widget.dart';
 import '../teacher_module/teacher_dashboard_screen.dart';
 
@@ -63,44 +63,7 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
             child: Column(
               children: [
-                Ink(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    border: Border.all(color: colorPrimary, width: 2),
-                  ),
-                  child: Row(
-                    children: [
-                      ThemeCard(imgURL: widget.themeURL),
-                      const SizedBox(width: 16.0),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.title,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 4.0),
-                          Text(
-                            widget.creatorName,
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.black54),
-                          ),
-                          Visibility(
-                              visible: widget.isLive,
-                              child: const SizedBox(height: 16)),
-                          Visibility(
-                              visible: widget.isLive,
-                              child: Text("Live Quiz",
-                                  style:
-                                      TextStyle(color: Colors.red.shade600))),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                QuizViewCard(themeUrl: widget.themeURL, title: widget.title, creatorName: widget.creatorName, isLive: widget.isLive),
                 Visibility(
                   visible: widget.isLive,
                   child: Column(
@@ -393,3 +356,4 @@ class _CreateNewQuizScreenState extends State<CreateNewQuizScreen> {
     _ansET.text = "";
   }
 }
+

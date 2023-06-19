@@ -2,9 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:quizi/data/models/quiz_model/live_quiz_model.dart';
-import 'package:quizi/data/models/quiz_model/normal_quiz_model.dart';
-import 'package:quizi/data/models/quiz_model/quiz_question_model.dart';
 
 import '../models/request_model.dart';
 import '../models/student_profile_model.dart';
@@ -50,33 +47,6 @@ class FirebaseDatabaseHelper {
     } else {
       return RequestModel(isSuccess: false);
     }
-  }
-
-  Future<void> createNormalQuiz(NormalQuizModel quizModel) async {
-    final quizRef = database.ref("quizzes/normal/${quizModel.quizId}");
-    await quizRef.set(quizModel.toJson());
-  }
-
-  // Future<RequestModel> getNormalQuizes() async {
-  //
-  // }
-
-  Future<void> createLiveQuiz(LiveQuizModel quizModel) async {
-    final quizRef = database.ref("quizzes/live/${quizModel.quizId}");
-    await quizRef.set(quizModel.toJson());
-  }
-
-  Future<void> saveQuestions(QuizQuestionsModel ques) async {
-    final ref = database.ref("quizzes/questions/${ques.quizId}");
-    await ref.set(ques.toJson());
-  }
-
-  Future<void> saveToProfile(String creatorID, String quizID, String type) async {
-    final ref = database.ref("quizzes/teacher/$creatorID/$quizID");
-    ref.set({
-      "quiz_id" : quizID,
-      "type" : type
-    });
   }
 
   Future<void> updateQuizCount(String teacherID, int newValue) async {
