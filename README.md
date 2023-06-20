@@ -1,16 +1,34 @@
 # quizi
 
-A new Flutter project.
+A quiz application, where 
+    - a teacher can create live and non-live quizzes
+    - a student can attend any quiz and see his/her score
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Screenshots of the android application
 
-A few resources to get you started if this is your first Flutter project:
+Part by part screenshots are following:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### - Simple Home Screen
+<img src="git_components/home_screen.jpg" height="350">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### - Auth Screens
+<img src="git_components/login_screen.jpg" height="350"> <img src="git_components/sign_up_1.jpg" height="350"> <img src="git_components/sign_up_2.jpg" height="350">
+
+#### - Student Dashboard
+<img src="git_components/student_dashboard.jpg" height="350">
+
+#### - Teacher Dashboard
+<img src="git_components/teacher_dashboard.jpg" height="350">
+
+#### - Create Quizzes 
+<img src="git_components/create_quiz_1.jpg" height="350"> <img src="git_components/create_quiz_2.jpg" height="350"> <img src="git_components/create_quiz_3.jpg" height="350">
+
+#### - Play Quizzes
+<img src="git_components/quiz_1.jpg" height="350"> <img src="git_components/quiz_2.jpg" height="350"> <img src="git_components/quiz_3.jpg" height="350">
+
+
+## Downloadable Apk files
+
+- [Google Drive Link](https://drive.google.com/drive/folders/1JWQl1wj4nBEXdqrKvK9uomXA0LHXu4am?usp=sharing)
+
