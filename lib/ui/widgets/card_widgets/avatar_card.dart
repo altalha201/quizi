@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizi/ui/utility/colors.dart';
+
+import '../../utility/colors.dart';
 
 class AvatarCard extends StatelessWidget {
   const AvatarCard(

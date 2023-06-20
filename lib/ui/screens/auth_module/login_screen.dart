@@ -1,14 +1,14 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/ui/controllers/get_user_controller.dart';
-import 'package:quizi/ui/screens/student_module/student_dashboard_screen.dart';
-import 'package:quizi/ui/screens/teacher_module/teacher_dashboard_screen.dart';
 
+import '../../controllers/get_user_controller.dart';
 import '../../controllers/user_auth_controller.dart';
 import '../../utility/colors.dart';
 import '../../widgets/dual_text.dart';
 import '../../widgets/loading_widget.dart';
+import '../student_module/student_dashboard_screen.dart';
+import '../teacher_module/teacher_dashboard_screen.dart';
 import 'create_account_screen.dart';
 
 class LoginScreen extends StatelessWidget {

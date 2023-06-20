@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/ui/screens/quiz_module/play_quiz_screen.dart';
 
 import '../../../data/models/quiz_model/live_quiz_model.dart';
 import '../../../data/models/quiz_model/normal_quiz_model.dart';
-import '../../utility/colors.dart';
 import '../../utility/other_utils.dart';
 import '../../widgets/appbars/logo_appbar.dart';
 import '../../widgets/card_widgets/quiz_view_card.dart';
+import '../../widgets/circle_button.dart';
+import 'play_quiz_screen.dart';
 
 class StartQuizScreen extends StatelessWidget {
   const StartQuizScreen(
@@ -52,44 +52,21 @@ class StartQuizScreen extends StatelessWidget {
             ),
             Visibility(
               visible: fromStudent ?? false,
-              child: InkWell(
-                onTap: () {
-                  Get.to(
-                    PlayQuizScreen(
-                      quizID: isLive
-                          ? (liveQuizModel?.quizId ?? "")
-                          : (normalQuizModel?.quizId ?? ""),
-                      creatorID: isLive
-                          ? (liveQuizModel?.quizId ?? "")
-                          : (normalQuizModel?.quizId ?? ""),
-                    ),
-                  );
-                },
-                borderRadius: const BorderRadius.all(Radius.circular(100)),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Card(
-                    elevation: 5,
-                    shadowColor: colorPrimary.withOpacity(0.3),
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(100))),
-                    color: colorPrimary,
-                    child: const SizedBox(
-                      height: 100,
-                      width: 100,
-                      child: Center(
-                          child: Text(
-                        "Start Quiz",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500),
-                      )),
-                    ),
+              child: CircleButton(label: 'Start Quiz', onTap: () {
+                Get.to(
+                  PlayQuizScreen(
+                    quizID: isLive
+                        ? (liveQuizModel?.quizId ?? "")
+                        : (normalQuizModel?.quizId ?? ""),
+                    creatorID: isLive
+                        ? (liveQuizModel?.creatorId ?? "")
+                        : (normalQuizModel?.creatorId ?? ""),
+                    totalPoints: isLive
+                        ? (liveQuizModel?.totalQuestions ?? 0)
+                        : (normalQuizModel?.totalQuestions ?? 0),
                   ),
-                ),
-              ),
+                );
+              },),
             ),
           ],
         ),

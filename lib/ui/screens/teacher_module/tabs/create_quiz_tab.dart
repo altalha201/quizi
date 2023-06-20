@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/ui/controllers/get_user_controller.dart';
-import 'package:quizi/ui/screens/quiz_module/create_new_quiz_screen.dart';
-import 'package:quizi/ui/widgets/card_widgets/theme_card.dart';
 
+import '../../../controllers/get_user_controller.dart';
 import '../../../controllers/quiz_theme_controller.dart';
 import '../../../utility/colors.dart';
+import '../../../widgets/card_widgets/theme_card.dart';
 import '../../../widgets/loading_widget.dart';
 import '../../../widgets/quiz_widgets/date_picker_box.dart';
+import '../../quiz_module/create_new_quiz_screen.dart';
 
 class CreateQuizTab extends StatefulWidget {
   const CreateQuizTab({Key? key}) : super(key: key);

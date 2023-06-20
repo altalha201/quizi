@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/data/models/quiz_model/live_quiz_model.dart';
-import 'package:quizi/ui/controllers/get_user_controller.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../data/models/quiz_model/live_quiz_model.dart';
 import '../../../data/models/quiz_model/normal_quiz_model.dart';
 import '../../../data/models/quiz_model/question.dart';
+import '../../controllers/get_user_controller.dart';
 import '../../controllers/quiz_module/create_quiz_controller.dart';
 import '../../controllers/teacher_module/home_tab_controller.dart';
 import '../../utility/colors.dart';

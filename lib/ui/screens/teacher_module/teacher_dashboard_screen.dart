@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
-import 'package:quizi/ui/controllers/teacher_module/get_teachers_quiz_list_controller.dart';
-import 'package:quizi/ui/screens/teacher_module/tabs/create_quiz_tab.dart';
-import 'package:quizi/ui/screens/teacher_module/tabs/home_tab.dart';
-import 'package:quizi/ui/screens/teacher_module/tabs/participents_list_tab.dart';
-import 'package:quizi/ui/utility/colors.dart';
 
 import '../../controllers/get_user_controller.dart';
+import '../../controllers/teacher_module/get_teachers_quiz_list_controller.dart';
 import '../../controllers/teacher_module/home_tab_controller.dart';
+import '../../utility/colors.dart';
 import '../../widgets/appbars/logo_appbar.dart';
 import '../../widgets/card_widgets/teacher_profile_widget.dart';
 import '../../widgets/loading_widget.dart';
+import 'tabs/create_quiz_tab.dart';
+import 'tabs/home_tab.dart';
+import 'tabs/participents_list_tab.dart';
 
 class TeacherDashboardScreen extends StatefulWidget {
   const TeacherDashboardScreen({Key? key}) : super(key: key);

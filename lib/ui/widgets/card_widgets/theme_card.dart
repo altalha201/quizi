@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizi/ui/utility/colors.dart';
+
+import '../../utility/colors.dart';
 
 class ThemeCard extends StatelessWidget {
   const ThemeCard({Key? key, required this.imgURL, this.selected, this.onTap})

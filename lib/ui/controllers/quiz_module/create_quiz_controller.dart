@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:quizi/data/models/quiz_model/live_quiz_model.dart';
-import 'package:quizi/data/models/quiz_model/normal_quiz_model.dart';
-import 'package:quizi/data/models/quiz_model/quiz_question_model.dart';
-import 'package:quizi/data/services/cloud_store_helper.dart';
-import 'package:quizi/data/services/firebase_database_helper.dart';
 
+import '../../../data/models/quiz_model/live_quiz_model.dart';
+import '../../../data/models/quiz_model/normal_quiz_model.dart';
 import '../../../data/models/quiz_model/question.dart';
+import '../../../data/models/quiz_model/quiz_question_model.dart';
+import '../../../data/services/cloud_store_helper.dart';
+import '../../../data/services/firebase_database_helper.dart';
 
 class CreateQuizController extends GetxController {
   bool _creatingQuiz = false;

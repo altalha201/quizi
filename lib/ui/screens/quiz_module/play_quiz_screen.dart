@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quizi/ui/controllers/quiz_module/play_controller.dart';
-import 'package:quizi/ui/screens/quiz_module/quiz_result_screen.dart';
-import 'package:quizi/ui/utility/colors.dart';
-import 'package:quizi/ui/widgets/appbars/logo_appbar.dart';
-import 'package:quizi/ui/widgets/loading_widget.dart';
+
+import '../../controllers/quiz_module/play_controller.dart';
+import '../../utility/colors.dart';
+import '../../widgets/appbars/logo_appbar.dart';
+import '../../widgets/loading_widget.dart';
+import 'quiz_result_screen.dart';
 
 class PlayQuizScreen extends StatefulWidget {
   const PlayQuizScreen(
-      {Key? key, required this.quizID, required this.creatorID})
+      {Key? key,
+      required this.quizID,
+      required this.creatorID,
+      required this.totalPoints})
       : super(key: key);
 
   final String quizID, creatorID;
+  final int totalPoints;
 
   @override
   State<PlayQuizScreen> createState() => _PlayQuizScreenState();
@@ -20,7 +25,6 @@ class PlayQuizScreen extends StatefulWidget {
 class _PlayQuizScreenState extends State<PlayQuizScreen> {
   String _selectedAnswer = "";
   int _points = 0;
-  final List<String> _answerList = [];
 
   @override
   void initState() {
@@ -141,7 +145,6 @@ class _PlayQuizScreenState extends State<PlayQuizScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    _answerList.add(_selectedAnswer);
                     if (_selectedAnswer ==
                         playController.questions
                             .elementAt(playController.currentPosition)
@@ -152,10 +155,10 @@ class _PlayQuizScreenState extends State<PlayQuizScreen> {
                     if ((playController.currentPosition + 1) ==
                         playController.questions.length) {
                       Get.off(QuizResultScreen(
-                          points: _points,
-                          quizID: widget.quizID,
-                          creatorID: widget.creatorID,
-                        answers: _answerList,
+                        points: _points,
+                        quizID: widget.quizID,
+                        creatorID: widget.creatorID,
+                        totalPoints: widget.totalPoints,
                       ));
                     } else {
                       playController.updateQuestion();

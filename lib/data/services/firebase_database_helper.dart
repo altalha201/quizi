@@ -54,6 +54,25 @@ class FirebaseDatabaseHelper {
     await ref.update({'no_of_quizzes' : newValue});
   }
 
+  Future<void> updateParticipantsCount(String teacherID) async {
+    final ref = database.ref("users/teachers/$teacherID");
+    var snapshot = await ref.child("participants").get();
+    int currentValue = int.parse(snapshot.value!.toString()) + 1;
+    await ref.update({"participants" : currentValue});
+  }
+
+  Future<void> updatePoints(String studentID, int getPoint, int totalPoint) async {
+    final ref = database.ref("users/students/$studentID");
+    var pointSnapshot = await ref.child("points").get();
+    var totalPointSnapshot = await ref.child("total_points").get();
+    int newPoint = int.parse(pointSnapshot.value!.toString()) + getPoint;
+    int newTotalPoints = int.parse(totalPointSnapshot.value!.toString()) + totalPoint;
+    await ref.update({
+      "points" : newPoint,
+      "total_points" : newTotalPoints
+    });
+  }
+
   Future<RequestModel> getTeacherProfile(String uid) async {
     final teacher = await database.ref("users/teachers/$uid").get();
     if (teacher.exists) {

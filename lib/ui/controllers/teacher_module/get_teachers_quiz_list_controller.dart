@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
-import 'package:quizi/data/models/quiz_model/live_quiz_model.dart';
-import 'package:quizi/data/models/quiz_model/normal_quiz_model.dart';
-import 'package:quizi/data/services/cloud_store_helper.dart';
-import 'package:quizi/ui/controllers/cache_controller.dart';
+
+import '../../../data/models/quiz_model/live_quiz_model.dart';
+import '../../../data/models/quiz_model/normal_quiz_model.dart';
+import '../../../data/services/cloud_store_helper.dart';
+import '../cache_controller.dart';
 
 class GetTeachersQuizListController extends GetxController {
   bool _gettingNormalList = false, _gettingLiveList = false;

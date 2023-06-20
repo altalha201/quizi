@@ -11,7 +11,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LoadingAnimationWidget.dotsTriangle(color: colorPrimary, size: 50),
+      child: LoadingAnimationWidget.threeArchedCircle(color: colorPrimary, size: 50),
     );
   }
 }
