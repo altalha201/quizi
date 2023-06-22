@@ -14,8 +14,8 @@ class GetTeachersQuizListController extends GetxController {
   bool get gettingNormalList => _gettingNormalList;
   bool get gettingLiveList => _gettingLiveList;
 
-  List get normalQuizzes => _normalQuizzes;
-  List get liveQuizzes => _liveQuizzes;
+  List<NormalQuizModel> get normalQuizzes => _normalQuizzes;
+  List<LiveQuizModel> get liveQuizzes => _liveQuizzes;
 
   Future<void> getNormalList() async {
     _gettingNormalList = true;

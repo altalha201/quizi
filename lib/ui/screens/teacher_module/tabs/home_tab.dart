@@ -5,6 +5,7 @@ import '../../../controllers/teacher_module/get_teachers_quiz_list_controller.da
 import '../../../widgets/card_widgets/quiz_card.dart';
 import '../../../widgets/loading_widget.dart';
 import '../../../widgets/remark_title.dart';
+import '../teacher_quiz_list_screen.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -27,8 +28,11 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const RemarkTitle(
+        RemarkTitle(
           label: "My Quizzes",
+          onSeeAllTap: () {
+            Get.to(const TeacherQuizListScreen(title: "My Quizzes"));
+          },
         ),
         GetBuilder<GetTeachersQuizListController>(
           builder: (controller) {
@@ -41,15 +45,24 @@ class _HomeTabState extends State<HomeTab> {
                 scrollDirection: Axis.horizontal,
                 itemCount: controller.normalQuizzes.length,
                 itemBuilder: (context, index) {
-                  return QuizCard(isLive: false, nQuiz: controller.normalQuizzes[index],);
+                  return QuizCard(
+                    isLive: false,
+                    nQuiz: controller.normalQuizzes[index],
+                  );
                 },
               ),
             );
           },
         ),
-        const SizedBox(height: 16.0,),
-        const RemarkTitle(
+        const SizedBox(
+          height: 16.0,
+        ),
+        RemarkTitle(
           label: "My Live Quizzes",
+          onSeeAllTap: () {
+            Get.to(const TeacherQuizListScreen(title: "My Live Quizzes", isLive: true,));
+
+          },
         ),
         GetBuilder<GetTeachersQuizListController>(
           builder: (controller) {
@@ -62,7 +75,10 @@ class _HomeTabState extends State<HomeTab> {
                 scrollDirection: Axis.horizontal,
                 itemCount: controller.liveQuizzes.length,
                 itemBuilder: (context, index) {
-                  return QuizCard(isLive: true, lQuiz: controller.liveQuizzes[index],);
+                  return QuizCard(
+                    isLive: true,
+                    lQuiz: controller.liveQuizzes[index],
+                  );
                 },
               ),
             );
